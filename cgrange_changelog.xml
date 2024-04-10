@@ -3,6 +3,18 @@
 		<element>cgrange</element>
 		<type>plugin</type>
 		<group>fields</group>
+		<version>1.0.1</version>
+        <note>
+            <item>Update : 10/04/2024</item>
+        </note>
+        <fix>
+            <item>Missing CSS file in package</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgrange</element>
+		<type>plugin</type>
+		<group>fields</group>
 		<version>1.0.0</version>
         <note>
             <item>Update : 10/04/2024</item>
