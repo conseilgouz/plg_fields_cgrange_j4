@@ -9,7 +9,6 @@
 defined('_JEXEC') or die;
 $value = $field->value;
 if ($value == '') {
-    echo 50;
     return;
 }
 echo $value;

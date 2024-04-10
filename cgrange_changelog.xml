@@ -3,6 +3,19 @@
 		<element>cgrange</element>
 		<type>plugin</type>
 		<group>fields</group>
+		<version>1.0.2</version>
+        <note>
+            <item>Update : 10/04/2024</item>
+        </note>
+        <fix>
+            <item>Site : don't display if empty</item>
+            <item>Admin : if empty, set to min value</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgrange</element>
+		<type>plugin</type>
+		<group>fields</group>
 		<version>1.0.1</version>
         <note>
             <item>Update : 10/04/2024</item>

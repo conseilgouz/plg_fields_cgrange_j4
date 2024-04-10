@@ -34,6 +34,11 @@ class CgrangeField extends FormField
         $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
         $wa->registerAndUseStyle('cgrange', $base.'css/cgrange.css');
         $wa->registerAndUseScript('cgrange', $base.'js/cgrange.js');
+
+        if (!$this->value) { // not initialized : set it to 1
+            $this->value = $min;
+        }
+
         $def_form  = "<div style='display:flex'>";
         $def_form .= "<input type='range' name='".$this->name."' id='".$this->id."' value='".$this->value."' style='width:".$width."' class='form-cgrange ".$limitcls."' min='".$min."' max='".$max."' step='".$step."'> ";
         $def_form .= "<span id='cgrange-label-".$this->id."' class='cgrange-label' data='".$this->id."' style='margin-left:1em'></span>";
