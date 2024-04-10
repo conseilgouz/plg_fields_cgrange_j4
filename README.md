@@ -9,6 +9,8 @@ Sur cet exemple, la taille du champ est à 300px, les limites sont affichées en
 
 Lorsque le curseur bouge, la valeur affichée sur la droite évolue.
 
-Les paramètres sont simples : 
+![cgrange_example_bouge](https://github.com/conseilgouz/plg_fields_cgrange_j4/assets/19435246/c798fa96-f3b1-4944-b0dd-06bceea405b7)
+
+Les paramètres au niveau du plugin sont simples : 
 
 ![cgrange_params](https://github.com/conseilgouz/plg_fields_cgrange_j4/assets/19435246/37524f97-b757-4763-8a20-d06a0bd07cdb)
