@@ -3,6 +3,14 @@
 	<fields name="fieldparams">
 		<fieldset name="fieldparams" addfieldpath="/plugins/fields/cgrange/src/Form/Field">
 			<field
+				name="typerange"
+				type="radio" default="cursor" class="btn-group btn-group-yesno"
+				label="PLG_FIELDS_CGRANGE_TYPE_LABEL"
+				description="PLG_FIELDS_CGRANGE_TYPE_DESC">
+					<option value="cursor">PLG_FIELDS_CGRANGE_TYPE_CURSOR</option> 
+					<option value="range">PLG_FIELDS_CGRANGE_TYPE_RANGE</option> 
+			</field>
+			<field
 				name="min"
 				type="number" default="1"
 				label="PLG_FIELDS_CGRANGE_MIN_LABEL"
