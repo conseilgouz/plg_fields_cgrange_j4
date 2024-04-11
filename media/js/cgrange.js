@@ -1,6 +1,6 @@
 /*
 ; Fields CG Range
-; Version			: 1.1.0
+; Version			: 1.1.1
 ; Package			: Joomla 4.x/5.x
 ; copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 ; license    		: http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
@@ -40,17 +40,26 @@ function CGRange(id,options) {
 		let	min_range = parseInt(options.valmin);
 		let max_range = parseInt(options.valmax);
 		rangeSlider = new rSlider({
-			target: '#rSlider',
+			target: '#'+id,
 			values: {min:parseInt(options.min), max:parseInt(options.max)},
 			step: parseInt(options.step),
 			set: [min_range,max_range],
 			range: true,
 			tooltip: true,
-			scale: true,
+			scale: false,
 			labels: false,
 			onChange: this.rangeUpdated,
 		});
-	}		
+        if (options.enabled == 'false') {
+            rangeSlider.disabled('true');
+        }
+        if (options.limits == 'hide') {
+            limits = document.querySelectorAll('.'+id+' .rs-container .rs-scale span ins');
+            for(var i=0; i< limits.length; i++) {
+                limits[i].style.display = "none";
+            }
+        }
+	}
 }
 
 CGRange.prototype.rangeUpdated = function() {

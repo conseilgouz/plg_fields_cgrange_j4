@@ -1,7 +1,7 @@
 <?php
 /*
 ; Fields CG Range
-; Version			: 1.1.0
+; Version			: 1.1.1
 ; Package			: Joomla 4.x/5.x
 ; copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 ; license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
@@ -55,7 +55,7 @@ class CgrangeField extends FormField
         } else {
             $wa->registerAndUseStyle('cgrslider', $base.'css/rSlider.min.css');
             $wa->registerAndUseScript('cgrslider', $base.'js/rSlider.min.js');
-            $def_form .= '<div style="width:'.$width.'"><input class="form-cgrange" type="text" id="rSlider" name="'.$this->name.'"  data="'.$this->id.'"/></div>';
+            $def_form .= '<div style="width:'.$width.'" class="'.$this->id.'"><input class="form-cgrange" type="text" id="'.$this->id.'" name="'.$this->name.'"  data="'.$this->id.'"/></div>';
             $val = [];
             if (!$this->value) { // not initialized : set it to 1
                 $val[0] = $min;
@@ -65,7 +65,7 @@ class CgrangeField extends FormField
             }
             $document->addScriptOptions(
                 $this->id,
-                array('type' => $typerange,'min' => $min, 'max' => $max, 'step' => $step,'valmin' => $val [0], 'valmax' => $val[1])
+                array('type' => $typerange,'min' => $min, 'max' => $max, 'step' => $step,'valmin' => $val [0], 'valmax' => $val[1], 'limits' => $limits, 'enabled' => 'true' )
             );
         }
         $def_form .= '</div>';

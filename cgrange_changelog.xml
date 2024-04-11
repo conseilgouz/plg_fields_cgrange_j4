@@ -3,6 +3,22 @@
 		<element>cgrange</element>
 		<type>plugin</type>
 		<group>fields</group>
+		<version>1.1.1</version>
+        <note>
+            <item>Update : 11/04/2024</item>
+        </note>
+        <fix>
+            <item>Range : hide/show limits</item>
+            <item>Multiple ranges on same page</item>
+        </fix>
+        <addition>
+            <item>Show disabled range on front or show numbers.</item>
+        </addition>
+	</changelog>
+	<changelog>
+		<element>cgrange</element>
+		<type>plugin</type>
+		<group>fields</group>
 		<version>1.1.0</version>
         <note>
             <item>Update : 11/04/2024</item>

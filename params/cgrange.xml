@@ -42,6 +42,14 @@
 					<option value="show">JYES</option> 
 					<option value="hide">JNO</option> 
 			</field>
+			<field
+				name="front"
+				type="radio" default="hide" class="btn-group btn-group-yesno"
+				label="PLG_FIELDS_CGRANGE_FRONT_LABEL"
+				description="PLG_FIELDS_CGRANGE_FRONT_DESC">
+					<option value="show">JYES</option> 
+					<option value="hide">JNO</option> 
+			</field>
 		</fieldset>
 	</fields>
 </form>
