@@ -37,12 +37,12 @@ function CGRange(id,options) {
     }
     // RSlider
 	if (options.type == "range") {
-		let	min_range = parseInt(options.valmin);
-		let max_range = parseInt(options.valmax);
+		let	min_range = options.valmin;
+		let max_range = options.valmax;
 		rangeSlider = new rSlider({
 			target: '#'+id,
-			values: {min:parseInt(options.min), max:parseInt(options.max)},
-			step: parseInt(options.step),
+			values: {min:options.min, max:options.max},
+			step: options.step,
 			set: [min_range,max_range],
 			range: true,
 			tooltip: true,

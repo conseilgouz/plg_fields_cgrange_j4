@@ -23,9 +23,9 @@ class CgrangeField extends FormField
         $base	= 'media/plg_fields_cgrange/';
         $def_form = '';
         $typerange  = (string)$this->getAttribute('typerange');
-        $min  = (int)$this->getAttribute('min');
-        $max  = (int)$this->getAttribute('max');
-        $step = (int)$this->getAttribute('step');
+        $min  = $this->getAttribute('min');
+        $max  = $this->getAttribute('max');
+        $step = $this->getAttribute('step');
         $width = (string)$this->getAttribute('width');
         $limits = (string)$this->getAttribute('limits');
         $limitcls = "";
