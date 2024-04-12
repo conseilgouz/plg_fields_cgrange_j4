@@ -21,7 +21,7 @@ if ($value == '') {
 }
 
 if ($fieldparams->get('front', 'hide') == 'hide') {
-// show only numbers
+    // show only numbers
     echo $value;
     return;
 }
@@ -51,32 +51,27 @@ if ($limits == "show") {
 }
 
 $def_form  = "<div style='display:flex'>";
-if ($typerange == 'cursor') {
-    if (!$field->value) { // not initialized : set it to 1
-        $field->value = $min;
-    }
-    $def_form .= "<input type='range' name='".$field->name."' id='range_".$field->id."' value='".$field->value."' style='width:".$width."' class='form-cgrange ".$limitcls."' data='range_".$field->id."' min='".$min."' max='".$max."' step='".$step."' disabled='disabled'> ";
-    $def_form .= "<span id='cgrange-label-".$field->id."' class='cgrange-label' data='range_".$field->id."' style='margin-left:1em'></span>";
-    $document->addScriptOptions(
-        'range_'.$field->id,
-        array('type' => $typerange,'min' => $min, 'max' => $max, 'step' => $step,'valmin' => $min, 'valmax' => $max)
-    );
+
+$wa->registerAndUseStyle('cgrslider', $base.'css/rSlider.min.css');
+$wa->registerAndUseScript('cgrslider', $base.'js/rSlider.min.js');
+$def_form .= '<div style="width:'.$width.'" class="range_'.$field->id.'_'.$item->id.'"><input class="form-cgrange" type="text" id="range_'.$field->id.'_'.$item->id.'" name="'.$field->name.'"  data="range_'.$field->id.'_'.$item->id.'"/></div>';
+$val = [];
+if (!$field->value) { // not initialized : set it to 1
+    $val[0] = $min;
+    $val[1] = $max;
 } else {
-    $wa->registerAndUseStyle('cgrslider', $base.'css/rSlider.min.css');
-    $wa->registerAndUseScript('cgrslider', $base.'js/rSlider.min.js');
-    $def_form .= '<div style="width:'.$width.'" class="range_'.$field->id.'"><input class="form-cgrange" type="text" id="range_'.$field->id.'" name="'.$field->name.'"  data="range_'.$field->id.'"/></div>';
-    $val = [];
-    if (!$field->value) { // not initialized : set it to 1
-        $val[0] = $min;
-        $val[1] = $max;
-    } else {
+    if ($typerange == "cursor") {
+        $val[0] = $field->value;
+        $val[1] = $field->value;
+    } else { // range
         $val = explode(',', $field->value);
     }
-    $document->addScriptOptions(
-        'range_'.$field->id,
-        array('type' => $typerange,'min' => $min, 'max' => $max, 'step' => $step,'valmin' => $val [0], 'valmax' => $val[1], 'limits' => $limits,'enabled' => 'false')
-    );
 }
+$document->addScriptOptions(
+    'range_'.$field->id.'_'.$item->id,
+    array('type' => $typerange,'min' => $min, 'max' => $max, 'step' => $step,'valmin' => $val [0], 'valmax' => $val[1], 'limits' => $limits,'enabled' => 'false')
+);
+
 $def_form .= '</div>';
 
 echo $def_form;

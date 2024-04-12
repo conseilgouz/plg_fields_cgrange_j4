@@ -28,46 +28,38 @@ class CgrangeField extends FormField
         $step = $this->getAttribute('step');
         $width = (string)$this->getAttribute('width');
         $limits = (string)$this->getAttribute('limits');
-        $limitcls = "";
-        if ($limits == "show") {
-            $limitcls = " limits";
-        }
+
         $document = Factory::getApplication()->getDocument();
         /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
         $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
         $wa->registerAndUseStyle('cgrange', $base.'css/cgrange.css');
-        if ((bool)Factory::getConfig()->get('debug')) { // Mode debug
+        if ((bool)Factory::getApplication()->getConfig()->get('debug')) { // Mode debug
             $document->addScript(''.URI::root().$base.'js/cgrange.js');
         } else {
             $wa->registerAndUseScript('cgrange', $base.'js/cgrange.js');
         }
         $def_form  = "<div style='display:flex'>";
-        if ($typerange == 'cursor') {
-            if (!$this->value) { // not initialized : set it to 1
-                $this->value = $min;
-            }
-            $def_form .= "<input type='range' name='".$this->name."' id='".$this->id."' value='".$this->value."' style='width:".$width."' class='form-cgrange ".$limitcls."' data='".$this->id."' min='".$min."' max='".$max."' step='".$step."'> ";
-            $def_form .= "<span id='cgrange-label-".$this->id."' class='cgrange-label' data='".$this->id."' style='margin-left:1em'></span>";
-            $document->addScriptOptions(
-                $this->id,
-                array('type' => $typerange,'min' => $min, 'max' => $max, 'step' => $step,'valmin' => $min, 'valmax' => $max)
-            );
+        $wa->registerAndUseStyle('cgrslider', $base.'css/rSlider.min.css');
+        $wa->registerAndUseScript('cgrslider', $base.'js/rSlider.min.js');
+        $def_form .= '<div style="width:'.$width.'" class="'.$this->id.'"><input class="form-cgrange" type="text" id="'.$this->id.'" name="'.$this->name.'"  data="'.$this->id.'"/></div>';
+        $val = [];
+        $val = [];
+        if (!$this->value) { // not initialized : set it to 1
+            $val[0] = $min;
+            $val[1] = $max;
+            $this->value = $min;
         } else {
-            $wa->registerAndUseStyle('cgrslider', $base.'css/rSlider.min.css');
-            $wa->registerAndUseScript('cgrslider', $base.'js/rSlider.min.js');
-            $def_form .= '<div style="width:'.$width.'" class="'.$this->id.'"><input class="form-cgrange" type="text" id="'.$this->id.'" name="'.$this->name.'"  data="'.$this->id.'"/></div>';
-            $val = [];
-            if (!$this->value) { // not initialized : set it to 1
-                $val[0] = $min;
-                $val[1] = $max;
-            } else {
+            if ($typerange == "cursor") {
+                $val[0] = $this->value;
+                $val[1] = $this->value;
+            } else { // range
                 $val = explode(',', $this->value);
             }
-            $document->addScriptOptions(
-                $this->id,
-                array('type' => $typerange,'min' => $min, 'max' => $max, 'step' => $step,'valmin' => $val [0], 'valmax' => $val[1], 'limits' => $limits, 'enabled' => 'true' )
-            );
         }
+        $document->addScriptOptions(
+            $this->id,
+            array('type' => $typerange,'min' => $min, 'max' => $max, 'step' => $step,'valmin' => $val [0], 'valmax' => $val[1], 'limits' => $limits, 'enabled' => 'true','width' => $width )
+        );
         $def_form .= '</div>';
 
         return $def_form;
