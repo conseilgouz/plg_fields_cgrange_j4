@@ -1,7 +1,7 @@
 <?php
 /*
 ; Fields CG Range
-; Version			: 1.1.1
+; Version			: 1.1.3
 ; Package			: Joomla 4.x/5.x
 ; copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 ; license    		: http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
@@ -43,7 +43,8 @@ $typerange  = $fieldparams->get('typerange');
 $min  = $fieldparams->get('min');
 $max  = $fieldparams->get('max');
 $step = $fieldparams->get('step');
-$width = $fieldparams->get('width');
+$width = (int)$fieldparams->get('width');
+$width = $width."px";
 $limits = $fieldparams->get('limits');
 $limitcls = "";
 if ($limits == "show") {

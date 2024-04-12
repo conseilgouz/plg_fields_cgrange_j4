@@ -1,7 +1,7 @@
 <?php
 /*
 ; Fields CG Range
-; Version			: 1.1.1
+; Version			: 1.1.3
 ; Package			: Joomla 4.x/5.x
 ; copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 ; license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
@@ -26,7 +26,8 @@ class CgrangeField extends FormField
         $min  = $this->getAttribute('min');
         $max  = $this->getAttribute('max');
         $step = $this->getAttribute('step');
-        $width = (string)$this->getAttribute('width');
+        $width = (int)$this->getAttribute('width');
+        $width = $width."px";
         $limits = (string)$this->getAttribute('limits');
 
         $document = Factory::getApplication()->getDocument();
