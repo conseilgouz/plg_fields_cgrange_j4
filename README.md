@@ -1,4 +1,4 @@
-# plg_fields_cgrange_j4
+# plg_fields_cgrange_j4   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://buymeacoffee.com/conseilgouz" >![buy_me_a_coffee](https://github.com/conseilgouz/plg_system_cgwebp_j4/assets/19435246/4fda4cb5-64f1-4717-81ae-c71a0fc26c2d)</a>
  Joomla Custom Field CG Range
 
 Ce plugin permet d'ajouter des curseurs ou des "ranges slider" au niveau des articles.
